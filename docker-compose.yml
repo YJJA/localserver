@@ -5,10 +5,12 @@ services:
     image: nginx
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/log:/var/log/nginx
+      - ./nginx/certs:/etc/nginx/certs
     networks:
       - nginx-proxy
 
@@ -26,6 +28,17 @@ services:
       - ./gitlab/config:/etc/gitlab
       - ./gitlab/logs:/var/log/gitlab
       - ./gitlab/data:/var/opt/gitlab
+    networks:
+      - nginx-proxy
+
+  verdaccio:
+    image: "verdaccio/verdaccio"
+    environment:
+      - VERDACCIO_PUBLIC_URL=https://registry-npm.example.com
+    volumes:
+      - ./verdaccio/conf:/verdaccio/conf
+      - ./verdaccio/storage:/verdaccio/storage
+      - ./verdaccio/plugins:/verdaccio/plugins
     networks:
       - nginx-proxy
 

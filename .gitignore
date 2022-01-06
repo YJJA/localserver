@@ -13,6 +13,7 @@ Icon
 
 # nginx
 nginx/log
+nginx/certs
 
 # jenkins
 jenkins/jenkins_home
@@ -21,3 +22,10 @@ jenkins/jenkins_home
 gitlab/config
 gitlab/data
 gitlab/logs
+
+# verdaccio
+verdaccio/plugins
+verdaccio/storage
+
+# certs
+certs
