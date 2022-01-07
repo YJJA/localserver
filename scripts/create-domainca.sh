@@ -23,7 +23,7 @@ while getopts 'rd:n:' o; do
     d)
       CERTS_DOMAIN_DIST=${OPTARG}
       ;;
-    d)
+    n)
       CERTS_DOMAIN_NAME=${OPTARG}
       ;;
     ?)
